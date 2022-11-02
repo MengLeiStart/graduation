@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../plugins/element-ui/lib/theme-chalk/index.css">
+    <title>Document</title>
+</head>
+<style>
+    .el-select .el-input {
+        width: 130px;
+    }
+
+    .input-with-select .el-input-group__prepend {
+        background-color: #f6f6f6;
+        text-emphasis-color: black;
+        color: #2a6be0;
+    }
+
+    .el-input__inner {
+        background-color: #f8f1f1;
+    }
+
+    .sousuo {
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .details {
+        margin: 100px auto;
+        width: 800px;
+        height: 900px;
+        background-color: rgba(246, 202, 153, 0.118);
+    }
+</style>
+
+<body>
+    <div id="app">
+        <header class="headermenu">
+            <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect"
+                background-color="skyblue" text-color="black" active-text-color="red">
+                <el-menu-item index="1" v-on:click="userindex()">首页</el-menu-item>
+                <el-menu-item index="2">个人中心</el-menu-item>
+            </el-menu>
+        </header>
+        <main>
+            <div class="details">
+                <input type="text" v-bind:value="shows">
+            </div>
+            <div class=" talk">
+            </div>
+        </main>
+    </div>
+</body>
+<script src="../plugins/vue.js"></script>
+<script src="../plugins/axios.min.js"></script>
+<script src="../plugins/element-ui/lib/index.js"></script>
+<script>
+
+    new Vue({
+        el: "#app",
+
+        data() {
+            return {
+                activeIndex2: '',
+                shows: ''
+            };
+        },
+        methods: {
+            //顶部导航栏执行的方法以及对应参数
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            },
+            userindex() {
+                window.location.href = '../index.html'
+            }
+        },
+        mounted() {
+            this.shows = sessionStorage.getItem("show");
+        }
+
+    })
+
+</script>
+
+
+</html>

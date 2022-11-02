@@ -97,7 +97,7 @@
             <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
                 <el-select v-model="select" slot="prepend" placeholder="请选择">
                     <el-option label="表白" value="1"></el-option>
-                    <el-option label="捞人" value="2"></el-option>
+                    <el-option label="找人" value="2"></el-option>
                     <el-option label="日常" value="3"></el-option>
                     <el-option label="二手" value="4"></el-option>
                     <el-option label="拼车" value="5"></el-option>
@@ -108,10 +108,10 @@
         </div>
         <main>
             <section id="gallery-wrapper">
-                <article class="white-panel" v-for="show in usershow">
+                <article class="white-panel" v-for="show in usershow" v-on:click="details(show)">
                     <img src="imgs/a.jpg" class="thumb">
                     <h1><a href="#">{{show}}</a></h1>
-                    <p>s</p>
+                    <p>ds</p>
                 </article><br>
             </section>
         </main>
@@ -136,6 +136,9 @@
     });
 </script>
 <script>
+    sessionStorage.setItem("show", this.show);
+</script>
+<script>
     new Vue({
         el: "#app",
 
@@ -158,6 +161,11 @@
             },
             userup() {
                 window.location.href = 'pages/upload.html'
+            },
+            //点击盒子即可查看详情页面
+            details(show) {
+                location.replace("pages/informationdetails.html");
+                window.sessionStorage.setItem('show', show);
             }
         }
 
