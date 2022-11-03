@@ -50,9 +50,14 @@
         margin: 0 auto;
     }
 
-    #uploadimg {
+    textarea {
         display: block;
+        resize: none;
         margin: 0 auto;
+    }
+
+    .insert {
+        margin-left: 940px;
     }
 </style>
 
@@ -66,12 +71,15 @@
         </header>
         <main>
             <form enctype="multipart/form-data;" method="post" class="efo">
-                <img :src="url" class="rmg" width="100px" height="100px">
-                <input type="file" name="photoss" value="photoss" id="selectfile">
+                <img :src="url" id="preview" class="rmg" width="300px" height="300px">
+                <input type="file" name="photoss" value="photoss" id="selectfile" onchange="setImagePreview()">
                 <br>
-                <el-button type="primary" plain id="replace">选择头像</el-button>
+                <el-button type="primary" plain id="replace">选择图片</el-button>
                 <br>
-                <el-button type="success" id="uploadimg" plain v-on:click="uploads()">上传头像</el-button>
+                <textarea cols="70" rows="10" placeholder="说点啥吧..." name="textarea"></textarea>
+                <br>
+                <el-button type="primary" round class="insert" id="uploadimg" plain v-on:click="uploads()">发表
+                </el-button>
             </form>
         </main>
     </div>
@@ -80,6 +88,24 @@
 <script src="../plugins/vue.js"></script>
 <script src="../plugins/axios-0.18.0.js"></script>
 <script src="../plugins/element-ui/lib/index.js"></script>
+<script src="../plugins/jquery-1.11.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#replace').click(function () {
+            $('#selectfile').click();
+        })
+    })
+</script>
+<script>
+    function setImagePreview() {
+        var docObj = document.getElementById("selectfile");
+        var imgObjPreview = document.getElementById("preview");
+        console.log(docObj.files[0])
+        if (docObj.files && docObj.files[0]) {
+            imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+        }
+    }
+</script>
 <script>
     new Vue({
         el: "#app",
@@ -98,6 +124,7 @@
             userindex() {
                 window.location.href = '../index.html'
             },
+            //上传用户发表数据
             uploads() {
 
             }
