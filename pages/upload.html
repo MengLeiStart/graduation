@@ -31,6 +31,29 @@
     a {
         text-decoration: none;
     }
+
+    #selectfile {
+        display: none;
+    }
+
+    .el-menu {
+        margin-bottom: 30px;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    #replace {
+        display: block;
+        margin: 0 auto;
+    }
+
+    #uploadimg {
+        display: block;
+        margin: 0 auto;
+    }
 </style>
 
 <body>
@@ -42,15 +65,20 @@
             </el-menu>
         </header>
         <main>
-            <form>
-
+            <form enctype="multipart/form-data;" method="post" class="efo">
+                <img :src="url" class="rmg" width="100px" height="100px">
+                <input type="file" name="photoss" value="photoss" id="selectfile">
+                <br>
+                <el-button type="primary" plain id="replace">选择头像</el-button>
+                <br>
+                <el-button type="success" id="uploadimg" plain v-on:click="uploads()">上传头像</el-button>
             </form>
         </main>
     </div>
 
 </body>
 <script src="../plugins/vue.js"></script>
-<script src="../plugins/axios.min.js"></script>
+<script src="../plugins/axios-0.18.0.js"></script>
 <script src="../plugins/element-ui/lib/index.js"></script>
 <script>
     new Vue({
@@ -59,7 +87,8 @@
         data() {
             return {
                 activeIndex2: '',
-            };
+                url: ''
+            }
         },
         methods: {
             //顶部导航栏执行的方法以及对应参数
@@ -68,6 +97,9 @@
             },
             userindex() {
                 window.location.href = '../index.html'
+            },
+            uploads() {
+
             }
 
         }
