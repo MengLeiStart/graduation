@@ -39,6 +39,19 @@
     #informationform {
         margin-left: 580px;
     }
+
+    .headermenu img {
+        float: right;
+
+        vertical-align: middle;
+    }
+
+    .headermenu span {
+        float: right;
+        margin-right: 200px;
+        line-height: 60px;
+        vertical-align: middle;
+    }
 </style>
 
 <body>
@@ -47,6 +60,8 @@
             <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect"
                 background-color="skyblue" text-color="black" active-text-color="red">
                 <el-menu-item index="1" v-on:click="userindex()">首页</el-menu-item>
+                <span>欢迎登录,</span>
+                <img width="60px" height="60px">
             </el-menu>
         </header>
         <form enctype="multipart/form-data;" method="post" class="efo">
@@ -62,6 +77,9 @@
         <el-form ref="form" :model="form" label-width="80px" id="informationform">
             <el-form-item label="昵称">
                 <el-input v-model="form.name"></el-input>
+            </el-form-item>
+            <el-form-item label="密码">
+                <el-input v-model="form.password"></el-input>
             </el-form-item>
             <el-form-item label="性别">
                 <el-select v-model="form.sex" placeholder="请选择性别">
@@ -80,7 +98,6 @@
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="onSubmit">提交修改</el-button>
-                <el-button>取消</el-button>
             </el-form-item>
         </el-form>
     </div>
@@ -115,6 +132,7 @@
                     sex: '',
                     date1: '',
                     status: false,
+                    password: ''
                 },
                 activeIndex2: '',
                 //图片地址

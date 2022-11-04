@@ -65,6 +65,19 @@
     .details p {
         margin-left: 40%;
     }
+
+    .headermenu img {
+        float: right;
+
+        vertical-align: middle;
+    }
+
+    .headermenu span {
+        float: right;
+        margin-right: 200px;
+        line-height: 60px;
+        vertical-align: middle;
+    }
 </style>
 
 <body>
@@ -74,6 +87,8 @@
                 background-color="skyblue" text-color="black" active-text-color="red">
                 <el-menu-item index="1" v-on:click="userindex()">首页</el-menu-item>
                 <el-menu-item index="2" v-on:click="userinformation()">个人中心</el-menu-item>
+                <span>欢迎登录,</span>
+                <img width="60px" height="60px">
             </el-menu>
         </div>
         <main>
